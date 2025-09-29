@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns="http://v8.1c.ru/v8/tech-log">
+  
+  <log location="C:\rdv_audit_active\1c\log\Diag" history="24">
+    <event>
+      <eq property="name" value="ADDIN"/>
+    </event>
+    <event>
+      <eq property="name" value="EXCP"/>
+    </event>
+    <event>
+      <eq property="name" value="QERR"/>
+    </event>
+    <event>
+      <eq property="name" value="CALL"/>
+      <ne property="retexcp" value=""/>
+    </event>
+    <event>
+      <eq property="name" value="ADMIN"/>
+    </event>
+    <event>
+      <eq property="name" value="ATTN"/>
+    </event>
+    <event>
+      <eq property="name" value="CLSTR"/>
+    </event>
+    <event>
+      <eq property="name" value="PROC"/>
+    </event>
+    <event>
+      <eq property="name" value="CONN"/>
+    </event>
+    <event>
+      <eq property="name" value="SCOM"/>
+    </event>
+    <event>
+      <eq property="name" value="SESN"/>
+    </event>
+    <property name="Interface">
+      <event>
+        <eq property="name" value=""/>
+      </event>
+    </property>
+    <property name="Method">
+      <event>
+        <ne property="Module" value=""/>
+      </event>
+    </property>
+    <property name="Sdbl">
+      <event>
+        <eq property="name" value=""/>
+      </event>
+    </property>
+    <property name="prm">
+      <event>
+        <eq property="name" value=""/>
+      </event>
+    </property>
+    <property name="all"/>
+  </log>
+  
+  <log location="C:\rdv_audit_active\1c\log\CallsDiag" history="24">
+    <event>
+      <eq property="name" value="SCALL"/>
+      <gt property="duration" value="100"/>
+    </event>
+    <event>
+      <eq property="name" value="CALL"/>
+      <gt property="duration" value="100"/>
+      <ne property="MName" value="standartCall"/>
+    </event>
+    <event>
+      <eq property="name" value="CALL"/>
+      <gt property="MemoryPeak" value="10100100"/>
+      <ne property="MName" value="standartCall"/>
+    </event>
+    <event>
+      <eq property="name" value="CALL"/>
+      <like property="context" value="Система%"/>
+    </event>
+    <event>
+      <eq property="name" value="CALL"/>
+      <like property="context" value="ДинамическийСписок.ПолучитьДанные%"/>
+    </event>
+    <event>
+      <eq property="name" value="CALL"/>
+      <like property="context" value="Форма.Записать%"/>
+    </event>
+    <event>
+      <eq property="name" value="CALL"/>
+      <ne property="func" value=""/>
+    </event>
+    <property name="p:processName"/>
+    <property name="t:applicationName"/>
+    <property name="AppID"/>
+    <property name="Usr"/>
+    <property name="SessionID"/>
+    <property name="Context"/>
+    <property name="IName"/>
+    <property name="MName"/>
+    <property name="Memory"/>
+    <property name="MemoryPeak"/>
+    <property name="InBytes"/>
+    <property name="OutBytes"/>
+    <property name="CpuTime"/>
+    <property name="Func"/>
+    <property name="Form"/>
+    <property name="FormItem"/>
+    <property name="SearchString"/>
+    <property name="Module"/>
+    <property name="Method">
+      <event>
+        <ne property="Module" value=""/>
+      </event>
+    </property>
+    <property name="Interface">
+      <event>
+        <eq property="name" value=""/>
+      </event>
+    </property>
+  </log>
+  
+  <log location="C:\rdv_audit_active\1c\log\BigDB_01" history="24">
+    <event>
+      <eq property="name" value="DBMSSQL"/>
+      <gt property="duration" value="10000"/>
+    </event>
+    <event>
+      <eq property="name" value="DBMSSQL"/>
+      <gt property="Rows" value="100000"/>
+    </event>
+    <event>
+      <eq property="name" value="DBMSSQL"/>
+      <gt property="RowsAffected" value="100000"/>
+      <ne property="RowsAffected" value="-1"/>
+    </event>
+    <property name="all"/>
+  </log>
+  
+  <log location="C:\rdv_audit_active\1c\log\BigDB_00" history="24">
+    <event>
+      <eq property="name" value="DBMSSQL"/>
+      <le property="duration" value="10000"/>
+      <gt property="duration" value="100"/>
+    </event>
+    <property name="p:processName"/>
+	<property name="t:applicationName"/>
+    <property name="t:connectID"/>
+    <property name="Usr"/>
+	<property name="SessionID"/>
+    <property name="Context"/>
+    <property name="Rows"/>
+    <property name="RowsAffected"/>
+  </log>
+  
+  <log location="C:\rdv_audit_active\1c\log\TLockDiag" history="24">
+    <event>
+      <eq property="name" value="TTIMEOUT"/>
+    </event>
+    <event>
+      <eq property="name" value="TDEADLOCK"/>
+    </event>
+    <event>
+      <eq property="name" value="TLOCK"/>
+      <ne property="WaitConnections" value=""/>
+    </event>
+    <property name="all"/>
+  </log>
+  
+</config>

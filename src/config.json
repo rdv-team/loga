@@ -1,0 +1,41 @@
+﻿{
+	"base_directories": [
+		"C:\\Users\\МаксимКулбараков\\Desktop\\RDV\\= PEWETE =\\Технологический аудит\\Показатели техаудита\\1с\\full-2"
+	],
+	"output_directory": "C:\\Users\\МаксимКулбараков\\Desktop\\RDV\\= PEWETE =\\Технологический аудит\\Показатели техаудита\\1с\\parser-result\\",
+	"logger_directory": "C:\\Users\\МаксимКулбараков\\Desktop\\RDV\\= PEWETE =\\Технологический аудит\\Показатели техаудита\\1с\\parser-result\\logs\\",
+	"start_period": "250730110000",
+	"end_period": "250730125959",
+	"cpu_usage_percent": 0,
+	"output_file": "Исключительные ситуации (EXCP)_63893792097354.xlsx",
+	"logger_file": "Исключительные ситуации (EXCP)_63893792097354.log",
+	"base_subdirectories": [
+		"Full",
+		"CallsDiag",
+		"Diag",
+		"excp",
+		"full"
+	],
+	"event_name": "EXCP",
+	"event_limit": 0,
+	"keys_result": [
+		{
+			"name": "p:processName",
+			"alias": "Имя процесса"
+		},
+		{
+			"name": "Descr",
+			"alias": "Описание"
+		},
+		{
+			"name": "count",
+			"alias": "Количество",
+			"aggregation": [
+				"sum"
+			]
+		}
+	],
+	"keys_filters": [],
+	"keys_aggregate": "p:processName,Descr",
+	"keys_sort": "count DESC"
+}
