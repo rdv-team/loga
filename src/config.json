@@ -1,31 +1,60 @@
 ﻿{
 	"base_directories": [
-		"C:\\Users\\МаксимКулбараков\\Desktop\\RDV\\= PEWETE =\\Технологический аудит\\Показатели техаудита\\1с\\full-2"
+		"C:\\Users\\МаксимКулбараков\\Desktop\\RDV\\=Dev 073 оптимизация =\\log-trace\\log-trace"
 	],
-	"output_directory": "C:\\Users\\МаксимКулбараков\\Desktop\\RDV\\= PEWETE =\\Технологический аудит\\Показатели техаудита\\1с\\parser-result\\",
-	"logger_directory": "C:\\Users\\МаксимКулбараков\\Desktop\\RDV\\= PEWETE =\\Технологический аудит\\Показатели техаудита\\1с\\parser-result\\logs\\",
-	"start_period": "250730110000",
-	"end_period": "250730125959",
+	"output_directory": "C:\\Users\\МаксимКулбараков\\Desktop\\RDV\\=Dev 073 оптимизация =\\log-trace\\parser-result\\",
+	"logger_directory": "C:\\Users\\МаксимКулбараков\\Desktop\\RDV\\=Dev 073 оптимизация =\\log-trace\\parser-result\\logs\\",
+	"start_period": "251013120000",
+	"end_period": "251013135959",
 	"cpu_usage_percent": 0,
-	"output_file": "Исключительные ситуации (EXCP)_63893792097354.xlsx",
-	"logger_file": "Исключительные ситуации (EXCP)_63893792097354.log",
+	"output_file": "Топ 50 длительных серверных вызовов по контексту (CALL)_63896046607205.xlsx",
+	"logger_file": "Топ 50 длительных серверных вызовов по контексту (CALL)_63896046607205.log",
 	"base_subdirectories": [
 		"Full",
 		"CallsDiag",
-		"Diag",
-		"excp",
-		"full"
+		"calls-long",
+		"calls-0",
+		"calls-1",
+		"full",
+		"log-trace"
 	],
-	"event_name": "EXCP",
-	"event_limit": 0,
+	"event_name": "CALL",
+	"event_limit": 50,
 	"keys_result": [
 		{
 			"name": "p:processName",
 			"alias": "Имя процесса"
 		},
 		{
-			"name": "Descr",
-			"alias": "Описание"
+			"name": "filename",
+			"alias": "Файл"
+		},
+		{
+			"name": "processname",
+			"alias": "Процесс"
+		},
+		{
+			"name": "timestamp",
+			"alias": "Дата"
+		},
+		{
+			"name": "Context",
+			"alias": "Контекст"
+		},
+		{
+			"name": "duration",
+			"alias": "Длительность, сек",
+			"aggregation": [
+				"sum",
+				"percent",
+				"mean",
+				"median",
+				"p95",
+				"stddev",
+				"min",
+				"max",
+				"intervals_3_5"
+			]
 		},
 		{
 			"name": "count",
@@ -36,6 +65,6 @@
 		}
 	],
 	"keys_filters": [],
-	"keys_aggregate": "p:processName,Descr",
-	"keys_sort": "count DESC"
+	"keys_aggregate": "",
+	"keys_sort": "timestamp ASC"
 }

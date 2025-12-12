@@ -229,6 +229,8 @@ def extract_event_data(
     buffer_parts: List[str],
     event_name: str,
     timestamp_dt: datetime,
+    file_name: str,
+    process_name: str,
     keys_list: str,
     filter_set: FilterSet,
     logger
@@ -240,7 +242,9 @@ def extract_event_data(
         'timestamp': timestamp_dt,
         'Name': event_name,
         'count': 1,
-        'duration': 0
+        'duration': 0,
+        'filename': file_name,
+        'processname': process_name
     }
 
     # Правила преобразования
@@ -298,6 +302,9 @@ def preprocess_log_file_streaming(
     Генератор, который построчно читает лог и выдаёт события по одному.
     """
     pattern_filter_event = get_event_pattern(event_name)
+    file_name = file_path.name
+    file_path_str = str(file_path)
+    process_name = file_path.parent.name
     file_date = file_path.stem[:8]
     buffer_parts = []
     timestamp_dt = None
@@ -307,7 +314,7 @@ def preprocess_log_file_streaming(
         if PATTERN_NEW_EVENT.match(line):
             if buffer_parts:
                 try:
-                    extracted = extract_event_data(buffer_parts, event_name, timestamp_dt, keys_list, filter_set, logger)
+                    extracted = extract_event_data(buffer_parts, event_name, timestamp_dt, file_name, process_name, keys_list, filter_set, logger)
                     for ev in extracted:
                         yield ev
                 except Exception as e:
@@ -338,7 +345,7 @@ def preprocess_log_file_streaming(
 
     if buffer_parts:
         try:
-            extracted = extract_event_data(buffer_parts, event_name, timestamp_dt, keys_list, filter_set, logger)
+            extracted = extract_event_data(buffer_parts, event_name, timestamp_dt, file_name, process_name, keys_list, filter_set, logger)
             for ev in extracted:
                 yield ev
         except Exception as e:
